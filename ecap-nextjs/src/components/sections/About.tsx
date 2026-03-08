@@ -92,21 +92,66 @@ export default function About() {
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative"
+            className="relative group"
           >
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-video lg:aspect-[4/5] bg-gradient-to-br from-primary-100 to-ocean-100">
-              <Image
-                src="/images/ecap-group.jpeg"
-                alt="E-CAP Team"
-                fill
-                className="object-contain"
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-            </div>
+            <motion.div 
+              className="relative rounded-3xl overflow-hidden shadow-2xl aspect-video lg:aspect-[4/5] bg-gradient-to-br from-primary-100 to-ocean-100 transition-all duration-500 hover:shadow-3xl"
+              whileHover={{ scale: 1.02 }}
+              animate={{ 
+                y: [0, -10, 0],
+              }}
+              transition={{
+                y: {
+                  duration: 6,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }
+              }}
+            >
+              <motion.div
+                className="relative w-full h-full"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.4 }}
+              >
+                <Image
+                  src="/images/ecap-group.jpeg"
+                  alt="E-CAP Team"
+                  fill
+                  className="object-contain"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              </motion.div>
+              
+              {/* Overlay on hover */}
+              <div className="absolute inset-0 bg-gradient-to-t from-primary-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            </motion.div>
             
             {/* Decorative elements */}
-            <div className="absolute -top-6 -right-6 w-32 h-32 bg-coral-400 rounded-full opacity-20 blur-2xl" />
-            <div className="absolute -bottom-6 -left-6 w-40 h-40 bg-ocean-400 rounded-full opacity-20 blur-2xl" />
+            <motion.div 
+              className="absolute -top-6 -right-6 w-32 h-32 bg-coral-400 rounded-full opacity-20 blur-2xl"
+              animate={{ 
+                scale: [1, 1.2, 1],
+                opacity: [0.2, 0.3, 0.2]
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            />
+            <motion.div 
+              className="absolute -bottom-6 -left-6 w-40 h-40 bg-ocean-400 rounded-full opacity-20 blur-2xl"
+              animate={{ 
+                scale: [1, 1.3, 1],
+                opacity: [0.2, 0.35, 0.2]
+              }}
+              transition={{
+                duration: 5,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 1
+              }}
+            />
           </motion.div>
         </div>
 
